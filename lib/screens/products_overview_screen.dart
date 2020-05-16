@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/products_provider.dart';
+import '../models/products.dart';
 import '../widgets/products_grid.dart';
 
 enum FilterOptions {
@@ -19,7 +19,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productContainer = Provider.of<ProductsProvider>(context);
+    final productContainer = Provider.of<Products>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('My Shop'),
