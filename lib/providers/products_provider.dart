@@ -39,11 +39,15 @@ class ProductsProvider with ChangeNotifier {
   ];
 
   List<Product> get items {
-    return [... _items]; //copy
+    return [..._items]; //copy
   }
 
   void addProduct() {
     //_items.add(product);
     notifyListeners();
+  }
+
+  Product findById(String id) {
+    return _items.firstWhere((p) => p.id == id);
   }
 }
