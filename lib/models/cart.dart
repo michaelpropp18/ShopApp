@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Cart {
-  Map<String, CartItem> _items;
+class Cart with ChangeNotifier {
+  Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
     return {..._items};
+  }
+
+  int get itemCount {
+    return _items == null ? 0 : _items.length;
   }
 
   void addItem(String id, double price, String title) {
@@ -27,6 +31,7 @@ class Cart {
             price: price),
       );
     }
+    notifyListeners();
   }
 }
 
