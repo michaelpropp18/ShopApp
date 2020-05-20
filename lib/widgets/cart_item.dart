@@ -28,6 +28,25 @@ class CartItemWidget extends StatelessWidget {
         padding: EdgeInsets.only(right: 20),
       ),
       direction: DismissDirection.endToStart,
+      confirmDismiss: (direction) {
+        return showDialog(
+            context: context,
+            builder: (ctx) {
+              return AlertDialog(
+                title: Text('Confirm'),
+                content: Text(
+                    'Would you like to remove this item from your shopping cart?'),
+                    actions: <Widget>[
+                      FlatButton(child: Text('no'), onPressed: () {
+                        Navigator.of(ctx).pop(false);
+                      },),
+                      FlatButton(child: Text('yes'), onPressed: () {
+                        Navigator.of(ctx).pop(true);
+                      },)
+                    ],
+              );
+            });
+      },
       onDismissed: (_) {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
